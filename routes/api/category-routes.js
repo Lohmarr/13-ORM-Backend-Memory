@@ -3,26 +3,77 @@ const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
-router.get('/', (req, res) => {
-  // find all categories
-  // be sure to include its associated Products
+// Find all categories with associated products
+router.get('/', async (req, res) => {
+  try {
+    const categories = await Category.findAll({
+      include: Product
+    });
+    res.status(200).json(categories);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.get('/:id', (req, res) => {
-  // find one category by its `id` value
-  // be sure to include its associated Products
+// Find category by id with associated products
+router.get('/:id', async (req, res) => {
+  try {
+    const category = await Category.findByPk(req.params.id, {
+      include: Product
+    });
+    if (!category) {
+      res.status(404).json({ message: 'No category found with this id!' });
+      return;
+    }
+    res.status(200).json(category);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.post('/', (req, res) => {
-  // create a new category
+// Create new category
+router.post('/', async (req, res) => {
+  try {
+    const newCategory = await Category.create(req.body);
+    res.status(201).json(newCategory);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+// Update category by id
+router.put('/:id', async (req, res) => {
+  try {
+    const upCategory = await Category.findByPk(req.params.id);
+    if (!upCategory) {
+      res.status(404).json({ message: 'No category found with this id!' });
+      return;
+    }
+    await upCategory.update(req.body);
+    res.status(200).json(upCategory);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.delete('/:id', (req, res) => {
-  // delete a category by its `id` value
+// Delete category by id
+router.delete('/:id', async (req, res) => {
+  try {
+    const deCategory = await Category.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+
+    if (!deCategory) {
+      res.status(404).json({ message: 'No category found with this id!' });
+      return;
+    }
+
+    res.status(200).json(deCategory);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
