@@ -1,3 +1,5 @@
+.env
+.DS-Store
 # Logs
 logs
 *.log
