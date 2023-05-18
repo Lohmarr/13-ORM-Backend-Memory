@@ -40,7 +40,7 @@ This command will install the MySQL2, Sequelize, Express.js, and dotenv packages
 ## Walkthrough Video
 
  Please find below the link to the walkthrough video demonstrating the application's functionality:
- 
+
  <!-- TODO [Walkthrough Video]() -->
 
 ## Contact
