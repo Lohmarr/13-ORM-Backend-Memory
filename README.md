@@ -8,6 +8,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Testing API Routes](#testing-api-routes)
+- [Walkthrough Video](#Walkthrough Video)
 - [Contact](#contact)
 
 ## Installation
@@ -35,6 +36,14 @@ This command will install the MySQL2, Sequelize, Express.js, and dotenv packages
 ## Testing API Routes
 
  To test the API routes, you can use [Insomnia Core](https://insomnia.rest/) or any other similar tool. Test the GET, POST, PUT, and DELETE routes for categories, products, and tags.
+
+## Walkthrough Video
+
+Check out this
+
+[walkthrough video](https://www.awesomescreenshot.com/video/17536311?key=e3370e70846508f26a810a1f266794ba)
+
+to see how to set up and use the e-commerce back end. This video covers the installation process, how to seed the database, and how to test the API routes using Insomnia Core.
 
 ## Contact
 
